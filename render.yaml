@@ -12,7 +12,7 @@ services:
     name: gwent-server
     plan: free # Use the free instance type
     env: docker
-    repo: https://github.com/YOUR_USERNAME/gwent-classic # IMPORTANT: Change this!
+    repo: https://github.com/DJ-EJ-L/gwent-classic # IMPORTANT: Change this!
     dockerContext: ./server
     dockerfilePath: ./server/Dockerfile
     healthCheckPath: /
@@ -29,7 +29,7 @@ services:
     name: gwent-web
     plan: free # Use the free instance type
     env: docker
-    repo: https://github.com/YOUR_USERNAME/gwent-classic # IMPORTANT: Change this!
+    repo: https://github.com/DJ-EJ-L/gwent-classic # IMPORTANT: Change this!
     dockerContext: ./web
     dockerfilePath: ./web/Dockerfile
     healthCheckPath: /
