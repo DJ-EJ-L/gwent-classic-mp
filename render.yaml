@@ -3,17 +3,15 @@ services:
   - type: pserv
     name: gwent-db
     plan: free # Use the free instance type
-    ipAllowList: [] # Allows all services in your account to connect
 
   # The Backend Game Server (from the /server directory)
   - type: web
     name: gwent-server
-    plan: free # Use the free instance type
+    plan: free
+    repo: https://github.com/DJ-EJ-L/gwent-classic.git # Using your username
     env: docker
-    repo: https://github.com/DJ-EJ-L/gwent-classic # IMPORTANT: Change this!
     dockerContext: ./server
     dockerfilePath: ./server/Dockerfile
-    healthCheckPath: /
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -25,17 +23,18 @@ services:
   # The Frontend Web Client (from the /web directory)
   - type: web
     name: gwent-web
-    plan: free # Use the free instance type
+    plan: free
+    repo: https://github.com/DJ-EJ-L/gwent-classic.git # Using your username
     env: docker
-    repo: https://github.com/DJ-EJ-L/gwent-classic # IMPORTANT: Change this!
     dockerContext: ./web
     dockerfilePath: ./web/Dockerfile
-    healthCheckPath: /
     envVars:
       - key: REACT_APP_API_URL
         fromService:
           type: web
           name: gwent-server
-          property: url # Injects the URL of the backend server
+          property: host # Use 'host' instead of 'url'
       - key: PORT
         value: 3000
+    # The start command is needed to inject the protocol (https://)
+    startCommand: "REACT_APP_API_URL=https://${REACT_APP_API_URL} npm start"
