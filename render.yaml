@@ -2,14 +2,14 @@ services:
   # The PostgreSQL Database for the game
   - type: pserv
     name: gwent-db
-    plan: free # Use the free instance type
+    plan: free
 
   # The Backend Game Server (from the /server directory)
   - type: web
     name: gwent-server
     plan: free
-    repo: https://github.com/DJ-EJ-L/gwent-classic.git # Using your username
     env: docker
+    repo: https://github.com/DJ-EJ-L/gwent-classic.git
     dockerContext: ./server
     dockerfilePath: ./server/Dockerfile
     envVars:
@@ -24,8 +24,8 @@ services:
   - type: web
     name: gwent-web
     plan: free
-    repo: https://github.com/DJ-EJ-L/gwent-classic.git # Using your username
     env: docker
+    repo: https://github.com/DJ-EJ-L/gwent-classic.git
     dockerContext: ./web
     dockerfilePath: ./web/Dockerfile
     envVars:
@@ -33,8 +33,6 @@ services:
         fromService:
           type: web
           name: gwent-server
-          property: host # Use 'host' instead of 'url'
+          property: host # Provides the hostname e.g. gwent-server.onrender.com
       - key: PORT
         value: 3000
-    # The start command is needed to inject the protocol (https://)
-    startCommand: "REACT_APP_API_URL=https://${REACT_APP_API_URL} npm start"
