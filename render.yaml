@@ -3,8 +3,7 @@ services:
   - type: pserv
     name: gwent-db
     plan: free # Use the free instance type
-    postgres:
-      version: 14 # Specify a modern PostgreSQL version
+    version: "14" # Specify a modern PostgreSQL version
     ipAllowList: [] # Allows all services in your account to connect
 
   # The Backend Game Server (from the /server directory)
