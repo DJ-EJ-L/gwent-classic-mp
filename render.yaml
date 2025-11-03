@@ -7,9 +7,9 @@ services:
   # The Backend Game Server (from the /server directory)
   - type: web
     name: gwent-server
-    plan: free
-    env: docker
+    runtime: docker # Explicitly setting the runtime to docker
     repo: https://github.com/DJ-EJ-L/gwent-classic.git
+    plan: free
     dockerContext: ./server
     dockerfilePath: ./server/Dockerfile
     envVars:
@@ -23,9 +23,9 @@ services:
   # The Frontend Web Client (from the /web directory)
   - type: web
     name: gwent-web
-    plan: free
-    env: docker
+    runtime: docker # Explicitly setting the runtime to docker
     repo: https://github.com/DJ-EJ-L/gwent-classic.git
+    plan: free
     dockerContext: ./web
     dockerfilePath: ./web/Dockerfile
     envVars:
@@ -33,6 +33,6 @@ services:
         fromService:
           type: web
           name: gwent-server
-          property: host # Provides the hostname e.g. gwent-server.onrender.com
+          property: host
       - key: PORT
         value: 3000
