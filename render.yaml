@@ -9,8 +9,9 @@ services:
     runtime: docker
     repo: https://github.com/DJ-EJ-L/gwent-classic-mp.git
     plan: free
-    dockerContext: ./server
-    dockerfilePath: ./server/Dockerfile
+    # Corrected path to the ApiGateway folder
+    dockerContext: ./gwent-classic-mp/server-side/!new/ApiGateway
+    dockerfilePath: ./gwent-classic-mp/server-side/!new/ApiGateway/Dockerfile
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -25,8 +26,9 @@ services:
     runtime: docker
     repo: https://github.com/DJ-EJ-L/gwent-classic-mp.git
     plan: free
-    dockerContext: ./web
-    dockerfilePath: ./web/Dockerfile
+    # Assuming the web version is also inside the gwent-classic-mp folder
+    dockerContext: ./gwent-classic-mp/web-version
+    dockerfilePath: ./gwent-classic-mp/web-version/Dockerfile
     envVars:
       - key: REACT_APP_API_URL
         fromService:
