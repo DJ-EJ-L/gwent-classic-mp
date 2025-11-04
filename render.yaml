@@ -10,8 +10,8 @@ services:
     repo: https://github.com/DJ-EJ-L/gwent-classic-mp.git
     plan: free
     # Corrected path with "new" instead of "!new"
-    dockerContext: ./gwent-classic-mp/server-side/new/ApiGateway
-    dockerfilePath: ./gwent-classic-mp/server-side/new/ApiGateway/Dockerfile
+    dockerContext: ./server-side/!new/ApiGateway
+    dockerfilePath: ./server-side/!new/ApiGateway/Dockerfile
     envVars:
       - key: DATABASE_URL
         fromDatabase:
