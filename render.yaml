@@ -9,7 +9,7 @@ services:
     runtime: docker
     repo: https://github.com/DJ-EJ-L/gwent-classic-mp.git
     plan: free
-    # Corrected path with "new" instead of "!new"
+    # Corrected path: REMOVED the "gwent-classic-mp/" prefix
     dockerContext: ./server-side/!new/ApiGateway
     dockerfilePath: ./server-side/!new/ApiGateway/Dockerfile
     envVars:
@@ -26,8 +26,9 @@ services:
     runtime: docker
     repo: https://github.com/DJ-EJ-L/gwent-classic-mp.git
     plan: free
-    dockerContext: ./gwent-classic-mp/web-version
-    dockerfilePath: ./gwent-classic-mp/web-version/Dockerfile
+    # Corrected path: REMOVED the "gwent-classic-mp/" prefix
+    dockerContext: ./web-version
+    dockerfilePath: ./web-version/Dockerfile
     envVars:
       - key: REACT_APP_API_URL
         fromService:
