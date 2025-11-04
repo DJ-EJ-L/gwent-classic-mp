@@ -1,13 +1,15 @@
-services:
-  # The PostgreSQL Database for the game
-  - type: pserv
-    name: gwent-db
+# Define the database under its own top-level key
+databases:
+  - name: gwent-db
     plan: free
+    # Note: 'pserv' (PostgreSQL) is inferred from being in the 'databases' block
 
+# Define the web services under the 'services' key
+services:
   # The Backend Game Server (from the /server directory)
   - type: web
     name: gwent-server
-    runtime: docker # Explicitly setting the runtime to docker
+    runtime: docker
     repo: https://github.com/DJ-EJ-L/gwent-classic.git
     plan: free
     dockerContext: ./server
@@ -15,7 +17,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: gwent-db
+          name: gwent-db # This correctly references the database defined above
           property: connectionString
       - key: PORT
         value: 5000
@@ -23,7 +25,7 @@ services:
   # The Frontend Web Client (from the /web directory)
   - type: web
     name: gwent-web
-    runtime: docker # Explicitly setting the runtime to docker
+    runtime: docker
     repo: https://github.com/DJ-EJ-L/gwent-classic.git
     plan: free
     dockerContext: ./web
