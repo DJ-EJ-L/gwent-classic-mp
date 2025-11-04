@@ -9,9 +9,9 @@ services:
     runtime: docker
     repo: https://github.com/DJ-EJ-L/gwent-classic-mp.git
     plan: free
-    # Corrected path to the ApiGateway folder
-    dockerContext: ./gwent-classic-mp/server-side/!new/ApiGateway
-    dockerfilePath: ./gwent-classic-mp/server-side/!new/ApiGateway/Dockerfile
+    # Corrected path with "new" instead of "!new"
+    dockerContext: ./gwent-classic-mp/server-side/new/ApiGateway
+    dockerfilePath: ./gwent-classic-mp/server-side/new/ApiGateway/Dockerfile
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -26,7 +26,6 @@ services:
     runtime: docker
     repo: https://github.com/DJ-EJ-L/gwent-classic-mp.git
     plan: free
-    # Assuming the web version is also inside the gwent-classic-mp folder
     dockerContext: ./gwent-classic-mp/web-version
     dockerfilePath: ./gwent-classic-mp/web-version/Dockerfile
     envVars:
