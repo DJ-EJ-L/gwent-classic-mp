@@ -10,7 +10,7 @@ services:
   - type: web
     name: gwent-server
     runtime: docker
-    repo: https://github.com/DJ-EJ-L/gwent-classic.git
+    repo: https://github.com/DJ-EJ-L/gwent-classic-mp.git
     plan: free
     dockerContext: ./server
     dockerfilePath: ./server/Dockerfile
@@ -26,7 +26,7 @@ services:
   - type: web
     name: gwent-web
     runtime: docker
-    repo: https://github.com/DJ-EJ-L/gwent-classic.git
+    repo: https://github.com/DJ-EJ-L/gwent-classic-mp.git
     plan: free
     dockerContext: ./web
     dockerfilePath: ./web/Dockerfile
