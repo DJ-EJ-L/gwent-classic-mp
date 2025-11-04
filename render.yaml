@@ -7,10 +7,10 @@ services:
   - type: web
     name: gwent-server
     runtime: docker
-    repo: https://github.com/DJ-EJ-L/gwent-classic-mp.git # Correct repo name
+    repo: https://github.com/DJ-EJ-L/gwent-classic-mp.git
     plan: free
-    dockerContext: ./gwent-classic-mp/server # Corrected Path
-    dockerfilePath: ./gwent-classic-mp/server/Dockerfile # Corrected Path
+    dockerContext: ./server # Reverted to simple path
+    dockerfilePath: ./server/Dockerfile # Reverted to simple path
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -23,10 +23,10 @@ services:
   - type: web
     name: gwent-web
     runtime: docker
-    repo: https://github.com/DJ-EJ-L/gwent-classic-mp.git # Correct repo name
+    repo: https://github.com/DJ-EJ-L/gwent-classic-mp.git
     plan: free
-    dockerContext: ./gwent-classic-mp/web # Corrected Path
-    dockerfilePath: ./gwent-classic-mp/web/Dockerfile # Corrected Path
+    dockerContext: ./web # Reverted to simple path
+    dockerfilePath: ./web/Dockerfile # Reverted to simple path
     envVars:
       - key: REACT_APP_API_URL
         fromService:
