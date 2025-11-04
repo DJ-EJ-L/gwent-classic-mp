@@ -9,8 +9,8 @@ services:
     runtime: docker
     repo: https://github.com/DJ-EJ-L/gwent-classic-mp.git
     plan: free
-    dockerContext: ./server # Reverted to simple path
-    dockerfilePath: ./server/Dockerfile # Reverted to simple path
+    dockerContext: ./server
+    dockerfilePath: ./server/Dockerfile
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -25,8 +25,8 @@ services:
     runtime: docker
     repo: https://github.com/DJ-EJ-L/gwent-classic-mp.git
     plan: free
-    dockerContext: ./web # Reverted to simple path
-    dockerfilePath: ./web/Dockerfile # Reverted to simple path
+    dockerContext: ./web
+    dockerfilePath: ./web/Dockerfile
     envVars:
       - key: REACT_APP_API_URL
         fromService:
